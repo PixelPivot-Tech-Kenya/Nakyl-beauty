@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ── Nakyl Brand Tokens ─────────────────────────────── */
+:root {
+  /* Core Brand */
+  --burgundy:        #6B1232;
+  --burgundy-hover:  #8F1840;
+  --burgundy-dark:   #4D0D24;
+  --gold:            #D4AF6A;
+  --gold-light:      #F5EDDA;
+
+  /* Backgrounds */
+  --background:      #F5EDDA; /* ← Gold Light — page bg */  
+  --surface:         #FDFAF8; /* Warm White — cards, navbar, modals */
+  --surface-muted:   #FDF0F4; /* Blush Light — subtle sections */
+
+  /* Borders & Dividers */
+  --border:          #E8D5DC;
+  --border-focus:    #6B1232;
+
+  /* Text */
+  --foreground:      #1A0A0F;
+  --text-muted:      #4A3540;
+  --text-light:      #8C7580;
+  --text-taupe:      #B8967E;
+}
+@theme inline {
+  /* Map Nakyl tokens into Tailwind's theme system */
+  --color-background:    var(--background);
+  --color-foreground:    var(--foreground);
+  --color-surface:       var(--surface);
+  --color-surface-muted: var(--surface-muted);
+
+  --color-primary:       var(--burgundy);
+  --color-primary-hover: var(--burgundy-hover);
+  --color-primary-dark:  var(--burgundy-dark);
+
+  --color-accent:        var(--gold);
+  --color-accent-light:  var(--gold-light);
+
+  --color-border:        var(--border);
+  --color-border-focus:  var(--border-focus);
+
+  --color-text:          var(--foreground);
+  --color-text-muted:    var(--text-muted);
+  --color-text-light:    var(--text-light);
+  --color-text-taupe:    var(--text-taupe);
+
+  /* Typography */
+  --font-sans:    var(--font-jost);
+  --font-display: var(--font-cormorant);
+  --font-mono:    var(--font-geist-mono);
+}
+
+/* ── Dark Mode ──────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background:    #2A1F0A; /* ← Deep warm gold-brown in dark mode */
+    --surface:       #332608;
+    --surface-muted: #3D2E0E;
+    --border:        #5C4A1E;
+    --foreground:    #F5EDDA; /* ← Gold Light as text on dark */
+    --text-muted:    #C4A870;
+    --text-light:    #8C7850;
+    --text-taupe:    #B8967E;
+    --burgundy:      #8F1840;
+    --gold:          #D4AF6A;
+  }
+}
+
+/* ── Base Styles ────────────────────────────────────── */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), 'Jost', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Utility Classes ────────────────────────────────── */
+
+/* Buttons */
+.btn-primary {
+  background: var(--burgundy);
+  color: #ffffff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.btn-primary:hover  { background: var(--burgundy-hover); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--burgundy);
+  border: 1px solid var(--burgundy);
+  padding: 13px 32px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.btn-outline:hover { background: var(--burgundy); color: #ffffff; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 0.5px solid var(--border);
+  padding: 13px 32px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--burgundy); color: var(--burgundy); }
+
+/* Badges */
+.badge-sale    { background: var(--burgundy);    color: #ffffff; }
+.badge-new     { background: var(--surface-muted); color: var(--burgundy); border: 0.5px solid var(--border); }
+.badge-best    { background: var(--gold-light);  color: #7A5C00; border: 0.5px solid var(--gold); }
+.badge-natural { background: #F0F5F0; color: #3D5C3D; border: 0.5px solid #99B499; }
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+}
+
+/* Input focus ring */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(107, 18, 50, 0.08);
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-taupe);
+}
+
+/* Display headings */
+.heading-display {
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
+  font-weight: 300;
+}
+
+.top-bar p {
+  word-spacing: 0.3em;
+}
+
+/* Section "View all" link */
+.view-all-link {
+  font-family: var(--font-sans), 'Jost', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.view-all-link:hover {
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
