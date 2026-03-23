@@ -3,6 +3,7 @@ import { Jost } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import CartDrawer from './components/ui/CartDrawer'
+import Footer from './components/ui/Footer'
 
 const jost = Jost({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body>
         {children}
         <CartDrawer />
+        <Footer />
       </body>
     </html>
   );
