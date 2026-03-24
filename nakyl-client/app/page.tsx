@@ -17,15 +17,15 @@ export default function Home(){
       <Navbar/>
 
       {/* Hero Section */}
-      <section className="flex h-200">
+      <section className="flex flex-col md:flex-row md:h-[650px] lg:h-[800px]">
         <HeroContent />
         <HeroCarousel />
       </section>
 
       {/* Shop by Category */}
-      <section className="px-16 pt-20 pb-20" style={{ background: "var(--background)" }}>
+      <section className="px-4 sm:px-8 lg:px-16 pt-12 pb-12 lg:pt-20 lg:pb-20" style={{ background: "var(--background)" }}>
 
-        <AnimateInView className="flex items-end justify-between mb-10">
+        <AnimateInView className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 lg:mb-10">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <span style={{ display: "block", width: 32, height: 1, background: "var(--gold)" }} />
@@ -39,26 +39,16 @@ export default function Home(){
                 Our Collections
               </span>
             </div>
-            <h2 style={{
-              fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-              fontWeight: 300,
-              fontSize: "2.6rem",
-              letterSpacing: "0.04em",
-              color: "var(--foreground)",
-              lineHeight: 1.1,
-            }}>
+            <h2 className="section-heading" style={{ color: "var(--foreground)" }}>
               Shop by Category
             </h2>
           </div>
-          <a href="#" className="view-all-link">View all collections</a>
+          <a href="#" className="view-all-link self-start sm:self-auto">View all collections</a>
         </AnimateInView>
 
         {/* Category grid */}
-        <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: "1fr 1fr 1fr", gridTemplateRows: "320px 320px" }}
-        >
-          <AnimateInView className="row-span-2" variant="scale" delay={0.05}>
+        <div className="category-grid">
+          <AnimateInView className="md:row-span-2" variant="scale" delay={0.05}>
             <ProductCategoryCard
               title="Skincare"
               description="Rituals for radiant skin"
@@ -105,9 +95,9 @@ export default function Home(){
 
 
       {/* Best Selling Rituals */}
-      <section className="px-16 pt-20 pb-24" style={{ background: "var(--surface-muted)" }}>
+      <section className="px-4 sm:px-8 lg:px-16 pt-12 pb-16 lg:pt-20 lg:pb-24" style={{ background: "var(--surface-muted)" }}>
 
-        <AnimateInView className="flex items-end justify-between mb-10">
+        <AnimateInView className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 lg:mb-10">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <span style={{ display: "block", width: 32, height: 1, background: "var(--gold)" }} />
@@ -121,18 +111,11 @@ export default function Home(){
                 most loved
               </span>
             </div>
-            <h2 style={{
-              fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-              fontWeight: 300,
-              fontSize: "2.6rem",
-              letterSpacing: "0.04em",
-              color: "var(--foreground)",
-              lineHeight: 1.1,
-            }}>
+            <h2 className="section-heading" style={{ color: "var(--foreground)" }}>
               Best Selling Rituals
             </h2>
           </div>
-          <a href="#" className="view-all-link">Shop all products</a>
+          <a href="#" className="view-all-link self-start sm:self-auto">Shop all products</a>
         </AnimateInView>
 
         {/* Product grid */}
@@ -146,11 +129,11 @@ export default function Home(){
       </section>
 
       {/* Philosophy Banner Section */}
-      <section className="flex min-h-130">
+      <section className="flex flex-col md:flex-row">
 
         <AnimateInView
           variant="left"
-          className="w-1/2 flex flex-col justify-center px-16 py-20 gap-8"
+          className="w-full md:w-1/2 flex flex-col justify-center px-6 py-14 sm:px-10 md:px-16 md:py-20 gap-8"
           style={{ background: "var(--burgundy)" }}
           amount={0.15}
         >
@@ -170,7 +153,7 @@ export default function Home(){
           <h2 style={{
             fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
             fontWeight: 300,
-            fontSize: "2.8rem",
+            fontSize: "clamp(1.9rem, 4vw, 2.8rem)",
             lineHeight: 1.15,
             color: "#ffffff",
           }}>
@@ -213,7 +196,7 @@ export default function Home(){
 
         <AnimateInView
           variant="right"
-          className="w-1/2 flex items-center justify-center px-16 py-20"
+          className="w-full md:w-1/2 flex items-center justify-center px-6 py-14 sm:px-10 md:px-16 md:py-20"
           style={{ background: "var(--burgundy-dark)" }}
           amount={0.15}
         >

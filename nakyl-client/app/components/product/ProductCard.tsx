@@ -78,15 +78,13 @@ export default function ProductCard({
             {badge}
           </span>
         )}
-        <div className="w-full h-full flex items-center justify-center p-6">
-          <Image
-            src={image}
-            alt={name}
-            width={120}
-            height={150}
-            className="object-contain drop-shadow-sm"
-          />
-        </div>
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"
+        />
       </div>
 
       {/* Info block */}

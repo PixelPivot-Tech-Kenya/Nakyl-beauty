@@ -19,7 +19,7 @@ const stats = [
 
 export default function HeroContent() {
   return (
-    <div className="bg-primary text-white w-1/2 flex flex-col justify-between px-16 py-16 relative overflow-hidden">
+    <div className="bg-primary text-white w-full md:w-1/2 flex flex-col justify-between px-6 py-10 sm:px-10 md:px-16 md:py-16 relative overflow-hidden">
 
       {/* Decorative: soft gold radial glow — top-right */}
       <div style={{
@@ -69,13 +69,7 @@ export default function HeroContent() {
         </motion.div>
 
         {/* Heading */}
-        <motion.h1 {...fadeUp(0.3)} style={{
-          fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-          fontWeight: 300,
-          fontSize: "3.6rem",
-          lineHeight: 1.08,
-          color: "#ffffff",
-        }}>
+        <motion.h1 {...fadeUp(0.3)} className="hero-heading">
           Rituals that<br />
           <em style={{ color: "var(--gold)", fontStyle: "italic" }}>transform.</em>
         </motion.h1>

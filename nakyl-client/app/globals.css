@@ -172,3 +172,141 @@ input:focus, textarea:focus, select:focus {
   color: var(--burgundy);
   border-color: var(--burgundy);
 }
+
+/* ── Responsive Layout Helpers ─────────────────────────── */
+
+/* Category grid — 2 col mobile → 3 col desktop */
+.category-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px 200px;
+}
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
+  }
+}
+@media (min-width: 1280px) {
+  .category-grid {
+    grid-template-rows: 320px 320px;
+  }
+}
+
+/* Testimonials grid — 1 → 2 → 4 columns */
+.testimonials-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .testimonials-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Testimonials stats bar — column on mobile, row on sm+ */
+.testimonials-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+@media (min-width: 640px) {
+  .testimonials-stats {
+    flex-direction: row;
+    justify-content: center;
+    gap: 64px;
+    margin-top: 64px;
+    padding-top: 48px;
+  }
+}
+
+/* Hero heading — scales up with breakpoint */
+.hero-heading {
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  .hero-heading { font-size: 3rem; }
+}
+@media (min-width: 1280px) {
+  .hero-heading { font-size: 3.6rem; }
+}
+
+/* Section display heading — scales */
+.section-heading {
+  font-family: var(--font-display), 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 1.9rem;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+@media (min-width: 768px) {
+  .section-heading { font-size: 2.6rem; }
+}
+
+/* Cart table — grid on md+, stacked card on mobile */
+.cart-headers {
+  display: none;
+}
+@media (min-width: 768px) {
+  .cart-headers {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+}
+
+.cart-row {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cart-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .cart-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .cart-row-meta { display: contents; }
+}
+
+/* Checkout top bar steps — hide connector lines on small screens */
+@media (max-width: 479px) {
+  .checkout-step-connector { display: none; }
+}
+
+/* Shop page filter sidebar — hidden on mobile unless toggled */
+.shop-filters-sidebar {
+  display: none;
+}
+.shop-filters-sidebar.open {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .shop-filters-sidebar {
+    display: block !important;
+  }
+}

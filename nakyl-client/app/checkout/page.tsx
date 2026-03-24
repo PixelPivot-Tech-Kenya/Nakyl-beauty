@@ -111,14 +111,14 @@ export default function CheckoutPage() {
     <div style={{ minHeight: "100dvh", background: "var(--background)" }}>
 
       {/* Top bar */}
-      <div style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)", padding: "18px 64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div className="px-4 sm:px-10 lg:px-16" style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)", padding: "18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Link href="/" style={{ fontFamily: "var(--font-display), 'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 300, color: "var(--foreground)", textDecoration: "none", letterSpacing: "0.1em" }}>
           Nakyl
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {["Bag", "Shipping", "Payment"].map((step, i) => (
             <div key={step} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              {i > 0 && <span style={{ width: 24, height: 1, background: "var(--border)", display: "block" }} />}
+              {i > 0 && <span className="checkout-step-connector" style={{ width: 24, height: 1, background: "var(--border)", display: "block" }} />}
               <span style={{
                 fontFamily: "var(--font-sans), 'Jost', sans-serif",
                 fontSize: "0.58rem",
@@ -138,10 +138,10 @@ export default function CheckoutPage() {
       </div>
 
       {/* Body */}
-      <div style={{ display: "flex", minHeight: "calc(100dvh - 65px)" }}>
+      <div className="flex flex-col md:flex-row" style={{ minHeight: "calc(100dvh - 65px)" }}>
 
         {/* Left — Shipping form */}
-        <div style={{ flex: 1, padding: "56px 64px", borderRight: "1px solid var(--border)" }}>
+        <div className="flex-1 px-4 py-10 sm:px-8 md:px-16 md:py-14 md:border-r" style={{ borderColor: "var(--border)" }}>
           <div style={{ maxWidth: 520 }}>
             <div style={{ marginBottom: 32 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
@@ -164,7 +164,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Email + Phone */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   <label style={labelStyle}>Email</label>
                   <input name="email" type="email" required value={form.email} onChange={handleChange} style={inputStyle} />
@@ -182,7 +182,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* City + Country */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   <label style={labelStyle}>City</label>
                   <input name="city" type="text" required value={form.city} onChange={handleChange} style={inputStyle} />
@@ -237,7 +237,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Right — Order summary */}
-        <div style={{ width: 380, flexShrink: 0, padding: "56px 40px", background: "var(--surface-muted)" }}>
+        <div className="w-full md:w-96 md:shrink-0 px-4 py-10 sm:px-8 md:px-10 md:py-14" style={{ background: "var(--surface-muted)" }}>
           <h2 style={{
             fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
             fontWeight: 300,

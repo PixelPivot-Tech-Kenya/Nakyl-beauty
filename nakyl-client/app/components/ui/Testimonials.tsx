@@ -113,7 +113,7 @@ export default function Testimonials() {
       {/* Top ornamental border */}
       <div style={{ height: 1, background: "linear-gradient(to right, transparent, var(--gold), transparent)" }} />
 
-      <div style={{ padding: "96px 64px" }}>
+      <div className="px-4 py-16 sm:px-8 sm:py-20 lg:px-16 lg:py-24">
 
         {/* Section Header */}
         <div style={{ textAlign: "center", marginBottom: "72px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
@@ -137,7 +137,7 @@ export default function Testimonials() {
             style={{
               fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
               fontWeight: 300,
-              fontSize: "3rem",
+              fontSize: "clamp(1.9rem, 4vw, 3rem)",
               letterSpacing: "0.04em",
               color: "var(--foreground)",
               lineHeight: 1.1,
@@ -168,7 +168,7 @@ export default function Testimonials() {
             background: "var(--surface)",
             border: "1px solid var(--border)",
             borderRadius: "2px",
-            padding: "64px 80px",
+            padding: "clamp(28px, 5vw, 64px) clamp(20px, 6vw, 80px)",
             marginBottom: "32px",
             textAlign: "center",
             overflow: "hidden",
@@ -287,13 +287,7 @@ export default function Testimonials() {
         </div>
 
         {/* Grid of 4 testimonial cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "16px",
-          }}
-        >
+        <div className="testimonials-grid">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.id}
@@ -396,17 +390,7 @@ export default function Testimonials() {
         </div>
 
         {/* Bottom stats bar */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "64px",
-            marginTop: "64px",
-            paddingTop: "48px",
-            borderTop: "1px solid var(--border)",
-          }}
-        >
+        <div className="testimonials-stats">
           {[
             { value: "4.9", label: "Average Rating" },
             { value: "2,400+", label: "Verified Reviews" },

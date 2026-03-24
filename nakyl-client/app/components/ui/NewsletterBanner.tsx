@@ -8,12 +8,12 @@ export default function NewsletterBanner() {
   return (
     <section style={{ background: "var(--surface-muted)" }}>
       <div
+        className="px-4 py-16 sm:px-8 lg:px-16 lg:py-24"
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           textAlign: "center",
-          padding: "96px 64px",
           gap: "20px",
           maxWidth: "680px",
           margin: "0 auto",
@@ -68,9 +68,8 @@ export default function NewsletterBanner() {
 
         {/* Input + Button */}
         <div
+          className="flex flex-col sm:flex-row w-full"
           style={{
-            display: "flex",
-            width: "100%",
             maxWidth: "480px",
             marginTop: "12px",
             border: "1px solid var(--border)",

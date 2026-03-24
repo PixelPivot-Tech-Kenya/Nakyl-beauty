@@ -34,7 +34,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <div className="relative w-1/2 h-full overflow-hidden">
+    <div className="relative w-full h-72 sm:h-96 md:w-1/2 md:h-full overflow-hidden">
       {/* Image */}
       <Image
         key={current}

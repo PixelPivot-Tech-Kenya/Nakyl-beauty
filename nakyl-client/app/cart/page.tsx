@@ -19,7 +19,7 @@ export default function CartPage() {
       <Navbar />
 
       {/* Page header */}
-      <section style={{ background: "var(--surface-muted)", padding: "48px 64px 40px" }}>
+      <section className="px-4 py-10 sm:px-8 lg:px-16 lg:py-12" style={{ background: "var(--surface-muted)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
           <span style={{ display: "block", width: 32, height: 1, background: "var(--gold)" }} />
           <span style={{
@@ -44,7 +44,7 @@ export default function CartPage() {
         </h1>
       </section>
 
-      <section style={{ background: "var(--background)", padding: "48px 64px 80px" }}>
+      <section className="px-4 py-10 sm:px-8 lg:px-16 lg:py-16" style={{ background: "var(--background)" }}>
 
         {items.length === 0 ? (
           /* Empty state */
@@ -85,20 +85,13 @@ export default function CartPage() {
             </Link>
           </div>
         ) : (
-          <div style={{ display: "flex", gap: 48, alignItems: "flex-start" }}>
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
 
             {/* Items list */}
             <div style={{ flex: 1 }}>
 
               {/* Column headers */}
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "2fr 1fr 1fr 1fr auto",
-                gap: 16,
-                paddingBottom: 12,
-                borderBottom: "1px solid var(--border)",
-                marginBottom: 4,
-              }}>
+              <div className="cart-headers">
                 {["Product", "Price", "Quantity", "Total", ""].map((h) => (
                   <span key={h} style={{
                     fontFamily: "var(--font-sans), 'Jost', sans-serif",
@@ -114,14 +107,7 @@ export default function CartPage() {
 
               {/* Rows */}
               {items.map(({ product, quantity }) => (
-                <div key={product.id} style={{
-                  display: "grid",
-                  gridTemplateColumns: "2fr 1fr 1fr 1fr auto",
-                  gap: 16,
-                  alignItems: "center",
-                  padding: "20px 0",
-                  borderBottom: "1px solid var(--border)",
-                }}>
+                <div key={product.id} className="cart-row">
                   {/* Product info */}
                   <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                     <div style={{
@@ -159,64 +145,67 @@ export default function CartPage() {
                     </div>
                   </div>
 
-                  {/* Unit price */}
-                  <span style={{
-                    fontFamily: "var(--font-sans), 'Jost', sans-serif",
-                    fontSize: "0.82rem",
-                    color: "var(--text-muted)",
-                  }}>
-                    KES {product.price.toLocaleString()}
-                  </span>
-
-                  {/* Quantity controls */}
-                  <div style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    border: "1px solid var(--border)",
-                    borderRadius: 2,
-                  }}>
-                    <button
-                      onClick={() => updateQuantity(product.id, quantity - 1)}
-                      style={{ padding: "6px 10px", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}
-                    >
-                      <Minus size={12} />
-                    </button>
+                  {/* On mobile: price + qty + total + remove grouped */}
+                  <div className="cart-row-meta">
+                    {/* Unit price */}
                     <span style={{
-                      padding: "6px 14px",
                       fontFamily: "var(--font-sans), 'Jost', sans-serif",
-                      fontSize: "0.78rem",
-                      color: "var(--foreground)",
-                      borderLeft: "1px solid var(--border)",
-                      borderRight: "1px solid var(--border)",
+                      fontSize: "0.82rem",
+                      color: "var(--text-muted)",
                     }}>
-                      {quantity}
+                      KES {product.price.toLocaleString()}
                     </span>
+
+                    {/* Quantity controls */}
+                    <div style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      border: "1px solid var(--border)",
+                      borderRadius: 2,
+                    }}>
+                      <button
+                        onClick={() => updateQuantity(product.id, quantity - 1)}
+                        style={{ padding: "6px 10px", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}
+                      >
+                        <Minus size={12} />
+                      </button>
+                      <span style={{
+                        padding: "6px 14px",
+                        fontFamily: "var(--font-sans), 'Jost', sans-serif",
+                        fontSize: "0.78rem",
+                        color: "var(--foreground)",
+                        borderLeft: "1px solid var(--border)",
+                        borderRight: "1px solid var(--border)",
+                      }}>
+                        {quantity}
+                      </span>
+                      <button
+                        onClick={() => updateQuantity(product.id, quantity + 1)}
+                        style={{ padding: "6px 10px", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}
+                      >
+                        <Plus size={12} />
+                      </button>
+                    </div>
+
+                    {/* Line total */}
+                    <span style={{
+                      fontFamily: "var(--font-sans), 'Jost', sans-serif",
+                      fontSize: "0.88rem",
+                      fontWeight: 500,
+                      color: "var(--burgundy)",
+                    }}>
+                      KES {(product.price * quantity).toLocaleString()}
+                    </span>
+
+                    {/* Remove */}
                     <button
-                      onClick={() => updateQuantity(product.id, quantity + 1)}
-                      style={{ padding: "6px 10px", background: "none", border: "none", cursor: "pointer", color: "var(--text-muted)", display: "flex" }}
+                      onClick={() => removeItem(product.id)}
+                      aria-label="Remove item"
+                      style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-light)", display: "flex", padding: 4 }}
                     >
-                      <Plus size={12} />
+                      <X size={16} strokeWidth={1.5} />
                     </button>
                   </div>
-
-                  {/* Line total */}
-                  <span style={{
-                    fontFamily: "var(--font-sans), 'Jost', sans-serif",
-                    fontSize: "0.88rem",
-                    fontWeight: 500,
-                    color: "var(--burgundy)",
-                  }}>
-                    KES {(product.price * quantity).toLocaleString()}
-                  </span>
-
-                  {/* Remove */}
-                  <button
-                    onClick={() => removeItem(product.id)}
-                    aria-label="Remove item"
-                    style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-light)", display: "flex", padding: 4 }}
-                  >
-                    <X size={16} strokeWidth={1.5} />
-                  </button>
                 </div>
               ))}
 
@@ -243,9 +232,7 @@ export default function CartPage() {
             </div>
 
             {/* Order summary */}
-            <div style={{
-              width: 320,
-              flexShrink: 0,
+            <div className="w-full lg:w-80 lg:shrink-0" style={{
               background: "var(--surface)",
               border: "1px solid var(--border)",
               padding: "32px 28px",
