@@ -1,11 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
+import type { Transition, TargetAndTransition } from "framer-motion"
 
-const fadeUp = (delay = 0) => ({
+const EASE_CUBIC: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
+const fadeUp = (delay = 0): { initial: TargetAndTransition; animate: TargetAndTransition; transition: Transition } => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
+  transition: { duration: 0.7, ease: EASE_CUBIC, delay },
 })
 
 const stats = [
@@ -36,7 +39,7 @@ export default function HeroContent() {
       <motion.div
         initial={{ scaleY: 0, opacity: 0 }}
         animate={{ scaleY: 1, opacity: 0.45 }}
-        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        transition={{ duration: 1.1, ease: EASE_CUBIC, delay: 0.1 }}
         style={{
           position: "absolute", top: 0, left: 0,
           width: "2px", height: "100%",
@@ -142,7 +145,7 @@ export default function HeroContent() {
               key={stat.label}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.75 + i * 0.1 }}
+              transition={{ duration: 0.6, ease: EASE_CUBIC, delay: 0.75 + i * 0.1 }}
             >
               <p style={{
                 fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
